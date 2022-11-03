@@ -6,6 +6,6 @@ export interface IMemo{
 
   title: string;
   body: string;
-  createDate: Date;
+  createdDate: Date;
   finished: boolean;
 }
