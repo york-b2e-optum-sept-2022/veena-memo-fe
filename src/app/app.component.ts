@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {AccountService} from "./account.service";
+import {IMemo} from "./interface/IMemo";
+import {MemoService} from "./memo.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,29 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'memo-fe';
+  isLoggedIn: boolean = false;
+  isRegistering: boolean = false;
+  memoToUpdate: IMemo | null = null;
+
+
+  constructor(private accountService: AccountService, private memoService: MemoService) {
+    this.accountService.$account.subscribe(
+      (account) =>{
+        this.isLoggedIn = account !== null
+      }
+    );
+    this.memoService.$memoToUpdate.subscribe(
+      (memo) => {
+        this.memoToUpdate = memo;
+      }
+    );
+  }
+
+  onClick() {
+    this.isRegistering=!this.isRegistering;
+  }
+  onLogout() {
+    this.accountService.$account.next(null);
+  }
+
 }
