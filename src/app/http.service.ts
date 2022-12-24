@@ -59,7 +59,4 @@ export class HttpService {
       }
     ) as Observable<IMemo>
   }
-
-
-
 }

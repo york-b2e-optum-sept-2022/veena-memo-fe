@@ -48,7 +48,7 @@ export class AccountService {
           //show user that account is taken
           }
           this.$registrationError.next(this.UNKNOWN_ERROR);
-          // console.log
+          // console.error(err);
         //  TODO- handle error case
         }
       })
